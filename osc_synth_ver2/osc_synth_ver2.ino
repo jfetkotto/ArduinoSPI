@@ -96,7 +96,7 @@ void loop() {
     }
   }
   
-  send_SPI(0x00,0x00);
+  send_SPI((byte) 0x00,(byte) 0x00);
 }
 
 
