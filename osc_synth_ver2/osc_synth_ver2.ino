@@ -1,4 +1,3 @@
-
 #ifdef ESP8266
 #include <ESP8266WiFi.h>
 #else
@@ -119,7 +118,7 @@ void phase1(OSCMessage &msg,int addoff) {
 }
 
 void frequ1(OSCMessage &msg,int addoff) {
-  long val = (long)msg.getInt(0);
+  unsigned long val = (unsigned long)msg.getInt(0);
   Serial.print("/frequ1: ");
   send_SPI(FREQ, val);
   Serial.println( val);
@@ -149,7 +148,7 @@ void phase2(OSCMessage &msg,int addoff) {
 }
 
 void frequ2(OSCMessage &msg,int addoff) {
-  long val = (long)msg.getInt(0);
+  unsigned long val = (unsigned long)msg.getInt(0);
   Serial.print("/frequ2: ");
   send_SPI(FREQ | OSC2MASK, val);
   Serial.println(val);
@@ -182,7 +181,7 @@ void send_SPI(byte ctrl, byte data)
   digitalWrite(LED_BUILTIN, HIGH); // debug light off
 }
 
-void send_SPI(byte ctrl, long data)
+void send_SPI(byte ctrl, unsigned long data)
 {
   byte buff[3];
   buff [0] =  (byte) (data >> 8);
